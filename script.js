@@ -50,6 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <h3>${item.title}</h3>
         <p>${item.description}</p>
         <p><strong>Адрес:</strong> ${item.address}</p>
+        <a href="#" class="read-more">Читать подробнее</a>
       `;
       articlesContainer.appendChild(article);
     });
