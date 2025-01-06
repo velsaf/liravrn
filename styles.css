@@ -10,14 +10,13 @@ body {
 .container {
   display: flex;
   height: 100vh;
-  flex-direction: column;
+  flex-direction: row; /* По умолчанию горизонтальное расположение */
 }
 
 /* Карта */
 .map-container {
   flex: 1;
   background-color: #f0f0f0;
-  height: 50vh;
 }
 
 #map {
@@ -212,11 +211,11 @@ body {
 /* Адаптация для мобильных устройств */
 @media (max-width: 768px) {
   .container {
-    flex-direction: column;
+    flex-direction: column; /* Вертикальное расположение на мобильных */
   }
 
   .map-container {
-    height: 40vh;
+    height: 40vh; /* Карта занимает меньше места */
   }
 
   .content {
