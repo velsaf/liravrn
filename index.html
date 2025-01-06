@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LiraVRN - Литературные места Воронежа</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Левая часть: карта -->
+    <div class="map-container">
+      <div id="map"></div>
+    </div>
+
+    <!-- Правая часть: фильтры и статьи -->
+    <div class="content">
+      <!-- Поиск и фильтры -->
+      <div class="filters">
+        <input type="text" id="search" placeholder="Поиск по местам...">
+        <div class="filter-options">
+          <label><input type="checkbox" value="музей" data-filter="музей"> <img src="https://img.icons8.com/ios/50/museum.png" alt="Музей" class="icon"> Музеи</label>
+          <label><input type="checkbox" value="памятник" data-filter="памятник"> <img src="https://img.icons8.com/ios/50/statue.png" alt="Памятник" class="icon"> Памятники</label>
+          <label><input type="checkbox" value="библиотека" data-filter="библиотека"> <img src="https://img.icons8.com/ios/50/library.png" alt="Библиотека" class="icon"> Библиотеки</label>
+          <label><input type="checkbox" value="парк" data-filter="парк"> <img src="https://img.icons8.com/ios/50/park.png" alt="Парк" class="icon"> Парки</label>
+          <label><input type="checkbox" value="дом" data-filter="дом"> <img src="https://img.icons8.com/ios/50/home.png" alt="Дом" class="icon"> Дома</label>
+          <label><input type="checkbox" value="улица" data-filter="улица"> <img src="https://img.icons8.com/ios/50/road.png" alt="Улица" class="icon"> Улицы</label>
+        </div>
+      </div>
+
+      <!-- Вкладки: карта / статьи -->
+      <div class="tabs">
+        <button class="tab-button active" data-tab="map">Карта</button>
+        <button class="tab-button" data-tab="articles">Статьи</button>
+      </div>
+
+      <!-- Список мест (на вкладке Карта) -->
+      <div class="places-list" id="places-list">
+        <!-- Места будут загружаться сюда через JS -->
+      </div>
+
+      <!-- Область для статей (на вкладке Статьи) -->
+      <div class="articles-container" id="articles">
+        <!-- Статьи будут загружаться сюда через JS -->
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
