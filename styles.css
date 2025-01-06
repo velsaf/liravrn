@@ -10,14 +10,14 @@ body {
 .container {
   display: flex;
   height: 100vh;
-  flex-direction: column; /* Мобильная версия: вертикальное расположение */
+  flex-direction: column;
 }
 
 /* Карта */
 .map-container {
   flex: 1;
   background-color: #f0f0f0;
-  height: 50vh; /* Мобильная версия: карта занимает половину экрана */
+  height: 50vh;
 }
 
 #map {
@@ -63,6 +63,12 @@ body {
   align-items: center;
   gap: 5px;
   cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.filter-options label:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
 }
 
 .filter-options img.icon {
@@ -83,7 +89,7 @@ body {
   background-color: #e0e0e0;
   cursor: pointer;
   border-radius: 5px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
 
 .tab-button.active {
@@ -91,9 +97,13 @@ body {
   color: white;
 }
 
+.tab-button:hover {
+  transform: translateY(-2px);
+}
+
 /* Список мест */
 .places-list {
-  display: none; /* Скрыто по умолчанию */
+  display: none;
   opacity: 0;
   transition: opacity 0.5s ease;
 }
@@ -129,7 +139,7 @@ body {
 
 /* Статьи */
 .articles-container {
-  display: none; /* Скрыто по умолчанию */
+  display: none;
   opacity: 0;
   transition: opacity 0.5s ease;
 }
@@ -170,6 +180,35 @@ body {
   background-color: #e0e0e0;
 }
 
+.article .read-more {
+  display: inline-block;
+  margin-top: 10px;
+  color: #ff4757;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.article .read-more:hover {
+  color: #e63946;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.article, .place-item {
+  animation: fadeIn 0.5s ease;
+}
+
 /* Адаптация для мобильных устройств */
 @media (max-width: 768px) {
   .container {
@@ -177,7 +216,7 @@ body {
   }
 
   .map-container {
-    height: 40vh; /* Меньше места для карты на мобильных */
+    height: 40vh;
   }
 
   .content {
