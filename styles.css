@@ -10,12 +10,14 @@ body {
 .container {
   display: flex;
   height: 100vh;
+  flex-direction: column; /* Мобильная версия: вертикальное расположение */
 }
 
 /* Карта */
 .map-container {
   flex: 1;
   background-color: #f0f0f0;
+  height: 50vh; /* Мобильная версия: карта занимает половину экрана */
 }
 
 #map {
@@ -32,6 +34,7 @@ body {
   overflow-y: auto;
 }
 
+/* Фильтры */
 .filters {
   margin-bottom: 20px;
 }
@@ -165,4 +168,32 @@ body {
   object-fit: cover;
   border-radius: 5px;
   background-color: #e0e0e0;
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .map-container {
+    height: 40vh; /* Меньше места для карты на мобильных */
+  }
+
+  .content {
+    padding: 10px;
+  }
+
+  .filter-options {
+    flex-direction: column;
+  }
+
+  .tab-button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  .article img.placeholder {
+    height: 100px;
+  }
 }
