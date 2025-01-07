@@ -5,6 +5,13 @@ document.addEventListener("DOMContentLoaded", function () {
   const searchInput = document.getElementById("search");
   const filterOptions = document.querySelectorAll(".filter-options input");
 
+  // Элементы модального окна
+  const modal = document.getElementById("modal");
+  const modalTitle = document.getElementById("modal-title");
+  const modalDescription = document.getElementById("modal-description");
+  const modalAddress = document.getElementById("modal-address");
+  const closeModal = document.querySelector(".close");
+
   // Инициализация карты
   const map = L.map("map").setView([51.6616, 39.2003], 13); // Центр на Воронеже
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -50,11 +57,43 @@ document.addEventListener("DOMContentLoaded", function () {
         <h3>${item.title}</h3>
         <p>${item.description}</p>
         <p><strong>Адрес:</strong> ${item.address}</p>
-        <a href="#" class="read-more">Читать подробнее</a>
+        <a href="#" class="read-more" data-id="${item.title}">Читать подробнее</a>
       `;
       articlesContainer.appendChild(article);
     });
+
+    // Добавляем обработчики для кнопок "Читать подробнее"
+    const readMoreButtons = document.querySelectorAll(".read-more");
+    readMoreButtons.forEach((button) => {
+      button.addEventListener("click", (e) => {
+        e.preventDefault();
+        const item = articlesData.find((article) => article.title === button.dataset.id);
+        if (item) {
+          openModal(item);
+        }
+      });
+    });
   }
+
+  // Открытие модального окна
+  function openModal(item) {
+    modalTitle.textContent = item.title;
+    modalDescription.textContent = item.description;
+    modalAddress.textContent = item.address;
+    modal.style.display = "flex";
+  }
+
+  // Закрытие модального окна
+  closeModal.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  // Закрытие модального окна при клике вне его
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
 
   // Добавление маркеров на карту
   function addMarkersToMap(data) {
